@@ -1,0 +1,116 @@
+// variables
+$fuentes: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+$color-letra-primario: rgb(215,215,215);
+$color-letra-secundario: rgb(96, 162, 192);
+
+$color-fondo-primario: #454545;
+$color-fondo-secundario: rgb(215,215,215);
+
+// mixins (funciones)
+@mixin crearBordes() {
+    width: 65%;
+    margin: 10px auto;
+    padding: 10px;
+    border: 5px solid $color-fondo-secundario;
+    border-radius: 10px;
+    box-shadow: 0px 0px 5px lightsalmon;
+}
+
+// herencia
+%alert-base{
+    width: 25%;
+    margin: 10px auto;
+    padding: 10px;
+    border: 1px solid;
+    font-size: 1.15em;
+    text-align: center;
+}
+
+// variables
+body{
+    background-color: $color-fondo-primario;
+    font-family: $fuentes;
+}
+
+h1{
+    color: $color-letra-primario;
+    text-align: center;
+}
+
+p{
+    color: $color-letra-primario;
+    text-align: center;
+}
+
+// mixins
+.cajapadre{
+    @include crearBordes();
+    text-align: center;
+    
+    background: $color-fondo-secundario;
+    margin: 0 auto;
+    padding: 0.5em;
+    width: 50%;
+
+    // anidaciones
+    h1{
+        color: $color-letra-secundario;
+        font-size: 1.5em;
+    }
+
+    p{
+        color: $color-letra-secundario;
+        font-size: 1.25em;
+    }
+
+    .cajahija{
+        color: $color-letra-secundario;
+        font-size: 1.15em;
+
+        .autor{
+            color: peru;
+            font-size: 1.15em;
+        }
+    }
+}
+
+// mixin
+.listado{
+    @include crearBordes();
+}
+
+//herencia
+.alert-normal{
+    @extend %alert-base;
+    background: #7f9cc9;
+    color: #000000;
+    border-color: #476da7;
+}
+
+.alert-danger{
+    @extend %alert-base;
+    background: #c97f7f;
+    color: #000000;
+    border-color: #a74747;
+}
+
+.alert-success{
+    @extend %alert-base;
+    background: #7fc97f;
+    color: #000000;
+    border-color: #6da747;
+}
+
+// operadores
+.operadores{
+    $var1: 1920px;
+    $var2: 150px;
+
+    width: $var1 * 100 / $var2;
+    margin: 0 auto;
+    padding: 10px;
+    border: 1px solid black;
+    background: $color-fondo-secundario;
+    color: $color-letra-secundario;
+    text-align: center;
+}
